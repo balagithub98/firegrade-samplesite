@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
@@ -20,17 +20,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js (Node JavaScript Runtime)
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'   # Cache npm (Node Package Manager) deps
+          node-version: '20'      # 🚫 no cache key here
 
-      - run: npm ci
-      - run: npm run build
-        env:
-          VITE_REPO_BASE: "/bala-sample-site/"  # set to "/<repository-name>/"
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Build
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
