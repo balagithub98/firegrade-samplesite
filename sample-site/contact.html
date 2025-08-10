@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Sample Site</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/"><svg class="icon"><use href="/icons.svg#logo"/></svg>Sample Site</a>
+    <nav class="nav">
+      <a href="/about.html"><svg class="icon"><use href="/icons.svg#info"/></svg>About</a>
+      <a class="active" href="/contact.html"><svg class="icon"><use href="/icons.svg#mail"/></svg>Contact</a>
+    </nav>
+    <button id="themeToggle" class="btn"><svg class="icon"><use href="/icons.svg#sun"/></svg><span>Theme</span></button>
+  </header>
+
+  <main class="container">
+    <h1>Contact</h1>
+    <form class="card" onsubmit="event.preventDefault(); alert('Message sent!');">
+      <label>Name <input required></label>
+      <label>Email <input type="email" required></label>
+      <label>Message <textarea rows="5" required></textarea></label>
+      <button class="btn primary"><svg class="icon"><use href="/icons.svg#send"/></svg>Send</button>
+    </form>
+  </main>
+
+  <footer class="site-footer"><small>© <span id="year"></span> Sample Site</small></footer>
+</body>
+</html>

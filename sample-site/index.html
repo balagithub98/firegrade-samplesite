@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sample Site</title>
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/src/styles.css" />
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <svg class="icon"><use href="/icons.svg#logo"/></svg>
+      Sample Site
+    </a>
+    <nav class="nav">
+      <a href="/about.html"><svg class="icon"><use href="/icons.svg#info"/></svg>About</a>
+      <a href="/contact.html"><svg class="icon"><use href="/icons.svg#mail"/></svg>Contact</a>
+    </nav>
+    <button id="themeToggle" class="btn">
+      <svg class="icon"><use href="/icons.svg#sun"/></svg>
+      <span>Theme</span>
+    </button>
+  </header>
+
+  <main class="container">
+    <h1>Welcome 👋</h1>
+    <p>This starter demonstrates a consistent theme color, accessible SVG icons, and a small interactive element.</p>
+
+    <section class="card">
+      <h2>FAQ (click to expand)</h2>
+      <div class="accordion" data-accordion>
+        <button class="accordion__header">
+          <span>What’s this site?</span>
+          <svg class="icon"><use href="/icons.svg#chevron"/></svg>
+        </button>
+        <div class="accordion__panel">
+          <p>A minimal multi‑page site built with plain HTML/CSS/JS.</p>
+        </div>
+
+        <button class="accordion__header">
+          <span>How do I change the brand color?</span>
+          <svg class="icon"><use href="/icons.svg#chevron"/></svg>
+        </button>
+        <div class="accordion__panel">
+          <p>Edit <code>:root { --brand: ... }</code> in <code>src/styles.css</code>. Your UI updates instantly.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Sample Site</small>
+  </footer>
+</body>
+</html>

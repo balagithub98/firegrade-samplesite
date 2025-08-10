@@ -1,0 +1,76 @@
+:root{
+  --brand: #6a5acd;       /* SlateBlue as the single theme color */
+  --bg: #0b0d10;
+  --card: #12151a;
+  --text: #e6e8ee;
+  --muted: #98a2b3;
+  --ring: color-mix(in oklab, var(--brand), white 20%);
+  --radius: 12px;
+  --space: 16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 20% -10%, color-mix(in oklab, var(--brand), black 80%), transparent),
+              linear-gradient(#0b0d10, #0b0d10);
+  accent-color: var(--brand);
+}
+
+.container{max-width:900px;margin:0 auto;padding:calc(var(--space)*2) var(--space)}
+.card{
+  background: var(--card);
+  border: 1px solid color-mix(in oklab, var(--brand), transparent 80%);
+  border-radius: var(--radius);
+  padding: calc(var(--space)*1.25);
+  box-shadow: 0 10px 30px -20px black;
+}
+
+.site-header, .site-footer{
+  display:flex; align-items:center; gap:12px;
+  padding:10px var(--space);
+  background: rgba(10,12,16,0.6); backdrop-filter: blur(8px);
+  border-bottom: 1px solid color-mix(in oklab, var(--brand), transparent 85%);
+}
+.site-footer{justify-content:center; border-top:1px solid color-mix(in oklab, var(--brand), transparent 85%); border-bottom:none}
+
+.brand{display:flex; gap:8px; align-items:center; font-weight:700; color:var(--text); text-decoration:none}
+.nav{margin-left:auto; display:flex; gap:12px}
+.nav a{display:inline-flex; align-items:center; gap:6px; color:var(--text); text-decoration:none; padding:8px 10px; border-radius:8px}
+.nav a.active, .nav a:hover{background: color-mix(in oklab, var(--brand), transparent 85%);}
+
+.icon{width:18px; height:18px; flex: 0 0 auto}
+.btn{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 12px; border-radius: 10px; border: 1px solid color-mix(in oklab, var(--brand), transparent 70%);
+  background: color-mix(in oklab, var(--brand), transparent 90%);
+  color:var(--text); cursor:pointer;
+}
+.btn.primary{background: color-mix(in oklab, var(--brand), black 85%); border-color: var(--ring)}
+.btn:focus-visible{outline:2px solid var(--ring); outline-offset:2px}
+
+label{display:grid; gap:6px; margin-block:10px}
+input, textarea{
+  background:#0f1217; color:var(--text); border:1px solid #232834; border-radius:10px; padding:10px 12px;
+}
+input:focus, textarea:focus{outline:2px solid var(--ring); border-color:transparent}
+
+/* Accordion */
+.accordion{display:grid; gap:8px; margin-top:10px}
+.accordion__header{
+  width:100%; display:flex; align-items:center; justify-content:space-between;
+  padding:12px; border-radius:10px; border:1px solid #232834; background:#0f1217; color:var(--text); cursor:pointer;
+}
+.accordion__panel{display:none; padding:12px; border:1px dashed #232834; border-radius:10px}
+.accordion__header[aria-expanded="true"] + .accordion__panel{display:block}
+
+/* Theme – light mode uses same brand for consistency */
+:root.light{
+  --bg: #ffffff;
+  --card: #f6f7fb;
+  --text: #111317;
+  --muted: #4b5565;
+  background: radial-gradient(1200px 600px at 20% -10%, color-mix(in oklab, var(--brand), white 80%), transparent),
+              #fff;
+}
