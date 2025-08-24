@@ -13,7 +13,10 @@ app.use(session({ secret: 'study-secret', resave: false, saveUninitialized: fals
 const users = [
   { email: 'admin@example.com', password: 'admin123', role: 'admin' },
   { email: 'alice@example.com', password: 'password123', role: 'user' },
-  { email: 'bob@example.com', password: 'password123', role: 'user' }
+  { email: 'bob@example.com', password: 'password123', role: 'user' },
+  { email: 'carol@example.com', password: 'password123', role: 'user' },
+  { email: 'dave@example.com', password: 'password123', role: 'user' },
+  { email: 'eve@example.com', password: 'password123', role: 'user' }
 ];
 
 function requireLogin(req, res, next) {
