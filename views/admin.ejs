@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Console</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Admin Console</h1>
+  <p><a href="/dashboard">Back to Dashboard</a></p>
+  <% if (error) { %><p class="error"><%= error %></p><% } %>
+  <h2>Existing Users</h2>
+  <ul>
+    <% users.forEach(u => { %>
+      <li><%= u.email %> (<%= u.role %>)</li>
+    <% }) %>
+  </ul>
+  <h2>Add User</h2>
+  <form method="POST" action="/admin/add">
+    <label>Email <input type="email" name="email" required></label><br>
+    <label>Password <input type="text" name="password" required></label><br>
+    <button type="submit">Add</button>
+  </form>
+</body>
+</html>
