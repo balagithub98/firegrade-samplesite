@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .progress { background: #eee; width: 300px; height: 20px; }
+    .progress-bar { background: #4caf50; height: 100%; }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Welcome <%= user.email %></h1>
+  <p><a href="/logout">Logout</a> | <a href="/study-plan">Study Plan</a> <% if (user.role === 'admin') { %>| <a href="/admin">Admin</a><% } %></p>
+
+  <h2>Daily App Hours</h2>
+  <table border="1" cellpadding="5">
+    <tr><% for (const day in hours) { %><th><%= day %></th><% } %></tr>
+    <tr><% for (const day in hours) { %><td><%= hours[day] %></td><% } %></tr>
+  </table>
+
+  <h2>Module Completion Progress</h2>
+  <div class="progress"><div class="progress-bar" style="width: <%= (modulesCompleted.length/10)*100 %>%"></div></div>
+  <p><%= modulesCompleted.length %> / 10 modules completed</p>
+
+  <h2>To-Do List</h2>
+  <form method="POST" action="/tasks">
+    <input type="text" name="text" placeholder="New Task" required>
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    <% tasks.forEach(t => { %>
+      <li>
+        <% if (t.done) { %><s><%= t.text %></s><% } else { %><%= t.text %> <form style="display:inline" method="POST" action="/tasks/<%= t.id %>/complete"><button>Done</button></form><% } %>
+      </li>
+    <% }) %>
+  </ul>
+
+  <h2>Days Remaining</h2>
+  <p><%= daysRemaining %> days left</p>
+</body>
+</html>

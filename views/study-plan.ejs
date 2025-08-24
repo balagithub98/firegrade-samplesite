@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study Plan</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .module { border: 1px solid #ccc; padding: 1rem; margin: 0.5rem; display:inline-block; width:150px; }
+    .done { background: #c8e6c9; }
+  </style>
+</head>
+<body>
+  <h1>Study Plan</h1>
+  <p><a href="/dashboard">Back to Dashboard</a></p>
+  <% modules.forEach(m => { %>
+    <div class="module <%= m.done ? 'done' : '' %>">
+      <h3>Module <%= m.id %></h3>
+      <p><%= m.note %></p>
+      <% if (!m.done) { %>
+        <form method="POST" action="/complete-module">
+          <input type="hidden" name="id" value="<%= m.id %>">
+          <button type="submit">Complete</button>
+        </form>
+      <% } else { %>
+        <p>Done</p>
+      <% } %>
+    </div>
+  <% }) %>
+</body>
+</html>
